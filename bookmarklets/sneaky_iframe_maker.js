@@ -63,7 +63,7 @@
     window.global_simons_sneaky_iframe = false;
     el_js.value = `(function(){
 let s = document.createElement("script");
-s.src = "https://simon-glitch.github.io/bookmarklets/sneaky_iframe_maker.js";
+s.src = "https://simanalix.github.io/bookmarklets/sneaky_iframe_maker.js";
 document.body.appendChild(s);
 window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
     })();`;
