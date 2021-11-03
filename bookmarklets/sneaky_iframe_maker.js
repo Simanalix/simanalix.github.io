@@ -129,11 +129,11 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
   if(true){
     let s = document.createElement("style");
     document.body.appendChild(s);
-    s.innerHTML = `#simons_sneaky_iframe_maker, #simons_sneaky_iframe_maker *{
+    s.innerHTML = `#simons_sneaky_iframe_maker, #simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) *{
   margin: 0;
 }
 
-#simons_sneaky_iframe_maker{
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere){
   width: 100%;
   height: 100%;
   z-index: 999999;
@@ -143,7 +143,7 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
   display: block;
   background: rgb(0,22,66);
 } 
-#simons_sneaky_iframe_maker .wawa_hotbar{
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar{
   display: flex;
   padding: 1em;
   height: 3.1415928em;
@@ -155,36 +155,37 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
 #simons_sneaky_iframe_maker .wawa_hotbar.wawa_two{
   background: rgb(220,170,20);
 }
-#simons_snframe_maker .wawa_hotbar p{
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar p{
   flex: 5;
 }
-#simons_sneaky_iframe_maker .wawa_hotbar button{
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar button{
   flex: 2;
 }
-p{
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) p{
   display: relative;
   padding: 0.25em;
   border: 0.125em solid rgb(11,0,11);
 }
-input{
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) input{
   width: 8em;
 }
-.wawa_two input{
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_two input{
   width: 4em;
 }
-button{
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button{
   border-radius: 0vw;
   border: 0.25em double rgb(40,40,190);
   background: rgb(255,200,200);
 }
-button:is(:focus,:hover){
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button:is(:focus,:hover){
   border-style: solid;
   background: rgb(255,180,180);
 }
-button:active{
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button:active{
   background: rgb(244,150,150);
 }
-iframe{width: 100%; height: 100%;}`;
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) iframe{width: 100%; height: 100%;}
+    `;
   }
   if(window.global_simons_sneaky_iframe_maker_url){
     el_url.value = window.global_simons_sneaky_iframe_maker_url;
