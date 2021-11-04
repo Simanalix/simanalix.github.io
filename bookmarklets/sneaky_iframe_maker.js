@@ -7,11 +7,12 @@
       "<button class = 'wawa_load'> Load </button> <button class = 'wawa_hide'> Hide </button>" +
     "</div>" +
     "<div class = 'wawa_hotbar wawa_two'>" +
-    "<p><b> Keys: </b></p> <p> <span> Hide: </span> <br> <input class = 'wawa_key wawa_hide' type = 'text' value = 'i'> </p> <p> <span> Display: </span> <br> <input class = 'wawa_key wawa_display' type = 'text' value = 'j'> </p> <p> <span> Close: </span> <br> <input class = 'wawa_key wawa_close' type = 'text' value = 'k'> </p> <p> <span> Open: </span> <br> <input class = 'wawa_key wawa_open' type = 'text' value = 'l'> </p>" +
+    "<p><b> Keys: </b></p> <p> <span> Hide: </span> <br> <input class = 'wawa_key wawa_hide' type = 'text' value = 'h'> </p> <p> <span> Display: </span> <br> <input class = 'wawa_key wawa_display' type = 'text' value = 'd'> </p> <p> <span> Close: </span> <br> <input class = 'wawa_key wawa_close' type = 'text' value = 'c'> </p> <p> <span> Open: </span> <br> <input class = 'wawa_key wawa_open' type = 'text' value = 'o'> </p>" +
     "</div>" +
     "<div class = 'wawa_iframe'></div>" +
   "</div>";
   el.id = "simons_sneaky_iframe_maker";
+  let el_hotbars = el.querySelectorAll(".wawa_hotbar");
   let el_url = el.querySelector("input.wawa_url");
   let el_js = el.querySelector("input.wawa_js");
   let el_iframe = el.querySelector("input.wawa_iframe");
@@ -24,12 +25,15 @@
     el_open: el.querySelector("input.wawa_key.wawa_open")
   };
   let display_hotbar = function(){
-    el.display = 'block';
+    el_hotbars[0].style.display = 'flex';
+    el_hotbars[1].style.display = 'flex';
   };
   let hide_hotbar = function(){
-    el.display = 'none';
+    el_hotbars[0].style.display = 'none';
+    el_hotbars[1].style.display = 'none';
   };
   let display_iframe = function(){
+    display_hotbar();
     if(window.global_simons_sneaky_iframe){
       window.global_simons_sneaky_iframe.style.display = 'block';
     }
@@ -39,7 +43,6 @@
       window.global_simons_sneaky_iframe.src = el_url.value;
       parent.appendChild(window.global_simons_sneaky_iframe);
     }
-    display_hotbar();
   };
   let close_iframe = function(){
     if(window.global_simons_sneaky_iframe){
@@ -74,46 +77,52 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
   el_hide_btn.onclick = function(){
     hide_hotbar();
   };
+  el_url.onkeyup = function(e){
+    if(e.key === "Enter"){
+      open_iframe();
+    }
+  }
   let ctrl_down = false;
   let alt_down = false;
   onkeydown = function(e){
     if(e.key === "Alt"){
       alt_down = true;
     }
-    if(e.key === "Control"){
+    else if(e.key === "Control"){
       ctrl_down = true;
     }
-    if(alt_down && ctrl_down){
+    else if(alt_down && ctrl_down){
       if(e.key === keys.el_hide.value){
         let just_in_case = window.onkeyup;
         window.onkeyup = null;
         setTimeout(function(){
           window.onkeyup = just_in_case;
-        })
+        }, 1000);
         hide_iframe();
       }
-      if(e.key === keys.el_display.value){
-        let just_in_case = window.onkeyup;
-        window.onkeyup = null;
-        setTimeout(function(){
-          window.onkeyup = just_in_case;
-        })
+      else if(e.key === keys.el_display.value){
+        
         display_iframe();
-      }
-      if(e.key === keys.el_close.value){
         let just_in_case = window.onkeyup;
         window.onkeyup = null;
         setTimeout(function(){
           window.onkeyup = just_in_case;
-        })
+        }, 1000);
+      }
+      else if(e.key === keys.el_close.value){
+        let just_in_case = window.onkeyup;
+        window.onkeyup = null;
+        setTimeout(function(){
+          window.onkeyup = just_in_case;
+        }, 1000);
         close_iframe();
       }
-      if(e.key === keys.el_open.value){
+      else if(e.key === keys.el_open.value){
         let just_in_case = window.onkeyup;
         window.onkeyup = null;
         setTimeout(function(){
           window.onkeyup = just_in_case;
-        })
+        }, 1000);
         open_iframe();
       }
     }
@@ -142,6 +151,9 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
   left: 0;
   display: block;
   background: rgb(0,22,66);
+  color: black;
+  font-family: arial;
+  font-size: 18px;
 } 
 #simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar{
   display: flex;
@@ -184,7 +196,7 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
 #simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button:active{
   background: rgb(244,150,150);
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) iframe{width: 100%; height: 100%;}
+#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) iframe{width: 100vw; height: 100vh;}
     `;
   }
   if(window.global_simons_sneaky_iframe_maker_url){
