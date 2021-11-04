@@ -25,6 +25,7 @@
     el_open: el.querySelector("input.wawa_key.wawa_open")
   };
   let display_hotbar = function(){
+    el.style.display = 'block';
     el_hotbars[0].style.display = 'flex';
     el_hotbars[1].style.display = 'flex';
   };
@@ -56,7 +57,7 @@
     display_iframe();
   };
   let hide_iframe = function(){
-    window.global_simons_sneaky_iframe.style.display = 'none';
+    el.style.display = 'none';
     hide_hotbar();
   };
   
