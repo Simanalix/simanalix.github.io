@@ -1,37 +1,16 @@
 (function(){
+  window.global_simons_sneaky_iframe_maker_url = "https://simanalix.github.io/bookmarklets/sneaky_iframe_maker.html";
+
   let el = document.createElement("div");
   document.body.appendChild(el);
   el.innerHTML = "<div class = 'wawa_wrapper'>" +
-    "<div class = 'wawa_hotbar wawa_one'>" +
-      "<p> <span> Iframe source: </span> <br> <input class = 'wawa_url' type = 'url' value='https://'> </p> <p> <span> Bookmarklet script: </span> <br> <input class = 'wawa_js' type = 'text'> </p>" +
-      "<button class = 'wawa_load'> Load </button> <button class = 'wawa_hide'> Hide </button>" +
-    "</div>" +
-    "<div class = 'wawa_hotbar wawa_two'>" +
-    "<p><b> Keys: </b></p> <p> <span> Hide: </span> <br> <input class = 'wawa_key wawa_hide' type = 'text' value = 'h'> </p> <p> <span> Display: </span> <br> <input class = 'wawa_key wawa_display' type = 'text' value = 'd'> </p> <p> <span> Close: </span> <br> <input class = 'wawa_key wawa_close' type = 'text' value = 'c'> </p> <p> <span> Open: </span> <br> <input class = 'wawa_key wawa_open' type = 'text' value = 'o'> </p>" +
-    "</div>" +
     "<div class = 'wawa_iframe'></div>" +
   "</div>";
   el.id = "simons_sneaky_iframe_maker";
-  let el_hotbars = el.querySelectorAll(".wawa_hotbar");
-  let el_url = el.querySelector("input.wawa_url");
-  let el_js = el.querySelector("input.wawa_js");
   let el_iframe = el.querySelector("input.wawa_iframe");
-  let el_load_btn = el.querySelector("button.wawa_load");
-  let el_hide_btn = el.querySelector("button.wawa_hide");
-  let keys = {
-    el_hide: el.querySelector("input.wawa_key.wawa_hide"),
-    el_display: el.querySelector("input.wawa_key.wawa_display"),
-    el_close: el.querySelector("input.wawa_key.wawa_close"),
-    el_open: el.querySelector("input.wawa_key.wawa_open")
-  };
   let display_hotbar = function(){
-    el.style.display = 'block';
-    el_hotbars[0].style.display = 'flex';
-    el_hotbars[1].style.display = 'flex';
   };
   let hide_hotbar = function(){
-    el_hotbars[0].style.display = 'none';
-    el_hotbars[1].style.display = 'none';
   };
   let display_iframe = function(){
     display_hotbar();
@@ -85,54 +64,6 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
   }
   let ctrl_down = false;
   let alt_down = false;
-  onkeydown = function(e){
-    if(e.key === "Alt"){
-      alt_down = true;
-    }
-    else if(e.key === "Control"){
-      ctrl_down = true;
-    }
-    else if(alt_down && ctrl_down){
-      if(e.key === keys.el_hide.value){
-        let just_in_case = window.onkeyup;
-        window.onkeyup = null;
-        setTimeout(function(){
-          window.onkeyup = just_in_case;
-        }, 1000);
-        hide_iframe();
-      }
-      else if(e.key === keys.el_display.value){
-        
-        display_iframe();
-        let just_in_case = window.onkeyup;
-        window.onkeyup = null;
-        setTimeout(function(){
-          window.onkeyup = just_in_case;
-        }, 1000);
-      }
-      else if(e.key === keys.el_close.value){
-        let just_in_case = window.onkeyup;
-        window.onkeyup = null;
-        setTimeout(function(){
-          window.onkeyup = just_in_case;
-        }, 1000);
-        close_iframe();
-      }
-      else if(e.key === keys.el_open.value){
-        let just_in_case = window.onkeyup;
-        window.onkeyup = null;
-        setTimeout(function(){
-          window.onkeyup = just_in_case;
-        }, 1000);
-        open_iframe();
-      }
-    }
-  };
-  for(let i in keys){
-    keys[i].onkeyup = function(e){
-      this.value = e.key;
-    }
-  }
   let s = document.createElement("style");
   document.body.appendChild(s);
   //s.innerHTML = ":not(.this.specific.selector.will.gaurantee.that.my.styles.are.applied)";
