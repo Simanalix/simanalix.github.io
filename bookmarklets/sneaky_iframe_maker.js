@@ -13,7 +13,7 @@
     "</div>" +
     "<div class = 'wawa_iframe'></div>" +
   "</div>";
-  el.id = "simons_sneaky_iframe_maker";
+  el.className = "simons_sneaky_iframe_maker";
   let el_hotbars = el.querySelectorAll(".wawa_hotbar");
   let el_url = el.querySelector("input.wawa_url");
   let el_js = el.querySelector("input.wawa_js");
@@ -55,7 +55,7 @@
       }
       visit_count_array[i]++;
     }
-    alert(JSON.stringify(visit_double_array));
+    // alert(JSON.stringify(visit_double_array));
     let t = new Date();
     let year = t.getUTCFullYear() + 10;
     t.setUTCFullYear(year);
@@ -84,7 +84,13 @@
     else{
       let parent = el.querySelector(".wawa_iframe");
       window.global_simons_sneaky_iframe = document.createElement("iframe");
-      window.global_simons_sneaky_iframe.src = el_url.value;
+      if(el_url.value[0] === "<"){
+        window.global_simons_sneaky_iframe.outerHTML = el_url.value;
+        window.global_simons_sneaky_iframe.classList.add("simons_sneaky_iframe_maker");
+      }
+      else{
+        window.global_simons_sneaky_iframe.src = el_url.value;
+      }
       parent.appendChild(window.global_simons_sneaky_iframe);
       remember_ifame_use();
     }
@@ -187,7 +193,7 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
   margin: 0;
 }
 
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere){
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere){
   width: 100%;
   height: 100%;
   z-index: 999999;
@@ -200,48 +206,48 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
   font-family: arial;
   font-size: 18px;
 } 
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar{
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar{
   display: flex;
   padding: 1em;
   height: 3.1415928em;
   overflow: auto;
 }
-#simons_sneaky_iframe_maker .wawa_hotbar.wawa_one{
+.simons_sneaky_iframe_maker .wawa_hotbar.wawa_one{
   background: rgb(10,220,90);
 }
-#simons_sneaky_iframe_maker .wawa_hotbar.wawa_two{
+.simons_sneaky_iframe_maker .wawa_hotbar.wawa_two{
   background: rgb(220,170,20);
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar p{
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar p{
   flex: 5;
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar button{
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_hotbar button{
   flex: 2;
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) p{
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) p{
   display: relative;
   padding: 0.25em;
   border: 0.125em solid rgb(11,0,11);
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) input{
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) input{
   width: 8em;
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_two input{
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) .wawa_two input{
   width: 4em;
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button{
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button{
   border-radius: 0vw;
   border: 0.25em double rgb(40,40,190);
   background: rgb(255,200,200);
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button:is(:focus,:hover){
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button:is(:focus,:hover){
   border-style: solid;
   background: rgb(255,180,180);
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button:active{
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) button:active{
   background: rgb(244,150,150);
 }
-#simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) iframe{width: 100vw; height: 100vh;}
+.simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) iframe{width: 100vw; height: 100vh;}
     `;
   }
   if(window.global_simons_sneaky_iframe_maker_url){
