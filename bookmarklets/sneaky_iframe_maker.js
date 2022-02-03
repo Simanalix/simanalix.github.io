@@ -84,6 +84,7 @@
     else{
       let parent = el.querySelector(".wawa_iframe");
       window.global_simons_sneaky_iframe = document.createElement("iframe");
+      parent.appendChild(window.global_simons_sneaky_iframe);
       if(el_url.value[0] === "<"){
         window.global_simons_sneaky_iframe.outerHTML = el_url.value;
         window.global_simons_sneaky_iframe.classList.add("simons_sneaky_iframe_maker");
@@ -91,7 +92,6 @@
       else{
         window.global_simons_sneaky_iframe.src = el_url.value;
       }
-      parent.appendChild(window.global_simons_sneaky_iframe);
       remember_ifame_use();
     }
   };
@@ -192,7 +192,6 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
     s.innerHTML = `#simons_sneaky_iframe_maker, #simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere) *{
   margin: 0;
 }
-
 .simons_sneaky_iframe_maker:not(.this.selector.is.really.specific.gauranteeing.that.our.css.always.will.work.everywhere){
   width: 100%;
   height: 100%;
