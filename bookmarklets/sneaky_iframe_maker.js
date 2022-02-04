@@ -29,7 +29,7 @@
   
   
   
-  
+  try{
   
   let dc = document.cookie.match(/value=([^;]+);/);
   let visit_double_array = (dc === null) ? [[],[]] : JSON.parse(dc[1]);
@@ -254,4 +254,5 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
     el_url.onkeyup();
     display_iframe();
   }
+  } catch(e){alert(e.name +": "+ e.message);}
 })();
