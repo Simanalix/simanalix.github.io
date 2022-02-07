@@ -129,6 +129,7 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
     hide_hotbar();
   };
   el_url.onkeyup = function(e){
+    if(e === undefined) return;
     if(e.key === "Enter"){
       open_iframe();
     }
