@@ -32,7 +32,13 @@
   try{
   
   let dc = document.cookie.match(/value=([^;]+);/);
-  let visit_double_array = (dc === null) ? [[],[]] : JSON.parse(dc[1]);
+  let visit_double_array;
+  try{
+    visit_double_array = JSON.parse(dc[1]);
+  }
+  catch(e){
+    visit_double_array = [[],[]];
+  }
   let visit_url_array = visit_double_array[0];
   let visit_count_array = visit_double_array[1];
   
