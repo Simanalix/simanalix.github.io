@@ -261,5 +261,11 @@ window.global_simons_sneaky_iframe_maker_url = "${el_url.value}";
     el_url.onkeyup();
     display_iframe();
   }
+  oncontextmenu = function(e){
+    e.preventDefault();
+    el_url.value = `<iframe width="560" height="315" src="${el_url.value}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    display_iframe();
+  };
   } catch(e){alert(e.name +": "+ e.message);}
+  
 })();
