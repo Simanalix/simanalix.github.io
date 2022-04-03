@@ -18,40 +18,39 @@ window.total_words = 0;
 window.words = {};
 window.word_frequencies = [];
 
-let read_word_file = function(f){
-  let reader = new FileReader();
-  reader.onload = function(e){
-
-    let t1 = Date.now(), t2;
-    let arr = e.target.result;
-    arr = arr.split(/\s/);
-    arr.shift();
-    arr.pop();
-    arr.pop();
-    let parr;
-    let m = Math.min(actual_allowed_word_variety, arr.length);
-    for(let i = 0; i < m; i++){
-      parr = arr[i].split(",");
-      parr[1] = Number(parr[1]);
-      total_words += parr[1];
-      words[parr[0]] = parr[1];
-      word_frequencies[i] = parr;
-    }
-    t2 = Date.now();
-    log(m +" words\nTook "+ ((t2-t1)/1000).toFixed(3) +" seconds to load "+ total_words +" words.");
-
-  };
-  reader.readAsText(f);
+let read_word_file = function(arr){
+  let t1 = Date.now(), t2;
+  arr = arr.split(/\s/);
+  arr.shift();
+  arr.pop();
+  arr.pop();
+  let parr;
+  let m = Math.min(actual_allowed_word_variety, arr.length);
+  for(let i = 0; i < m; i++){
+    parr = arr[i].split(",");
+    parr[1] = Number(parr[1]);
+    total_words += parr[1];
+    words[parr[0]] = parr[1];
+    word_frequencies[i] = parr;
+  }
+  t2 = Date.now();
+  log(m +" words\nTook "+ ((t2-t1)/1000).toFixed(3) +" seconds to load "+ total_words +" words.");
 };
 file_input.onchange = function(e){
   let f = file_input.files[0];
-  if(f) read_word_file(f);
+  if(f){
+    let reader = new FileReader();
+    reader.onload = function(e){
+      read_word_file(e.target.result);
+    }
+    reader.readAsText(f);
+  }
 };
 
 let do_fetch = function(){
-  let word_file_url = "simanalix.github.io/combination_game/data_sets/";
+  let word_file_url = "https://simanalix.github.io/combination_game/data_sets/unigram_freq.csv";
   if(location.hostname === "simanalix.github.io"){
-    fetch(word_file_url).then(read_word_file);
+    fetch(word_file_url).then(resp => resp.blob()).then(blob => blob.text()).then(text => read_word_file(text));
   }
 };
 
